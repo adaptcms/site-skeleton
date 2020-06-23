@@ -1,0 +1,41 @@
+{
+  "name": "adaptcms/site",
+  "description": "Adaptcms Site",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Charles Page",
+      "email": "charliepage88@gmail.com",
+      "homepage": "https://www.adaptcms.com/packages/adaptcms/site"
+    }
+  ],
+  "homepage": "https://github.com/adaptcms/site",
+  "keywords": [
+    "Laravel",
+    "Adaptcms",
+    "Site"
+  ],
+  "require": {
+    "illuminate/support": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Adaptcms\\Site\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Adaptcms\\Site\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Adaptcms\\Site\\SiteServiceProvider"
+      ],
+      "aliases": {
+        "Site": "Adaptcms\\Site\\Facades\\Site"
+      }
+    }
+  }
+}
