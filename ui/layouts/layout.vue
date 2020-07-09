@@ -76,15 +76,15 @@
     </nav>
 
     <div class="content h-auto py-6 px-64">
-      <slot />
-
       <template v-if="flashMessage">
         <div
-          class="w-56 fixed right-0 top-0 p-6 text-sm shadow text-white bg-blue rounded mr-4 mt-4 z-50 text-sm text-center"
+          class="w-64 fixed right-0 top-0 p-4 text-sm shadow text-white bg-green-500 border border-green-700 text-green-100 rounded mr-4 mt-4 z-50 text-sm text-center"
         >
           {{ flashMessage }}
         </div>
       </template>
+
+      <slot />
     </div>
 
     <div class="top-divider w-full"></div>
@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import get from 'lodash.get'
+import { get } from 'lodash'
 
 export default {
   props: {
