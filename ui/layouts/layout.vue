@@ -56,6 +56,15 @@
 
           <div v-if="user">
             <a
+              :href="$route('auth.dashboard')"
+              class="inline-block text-sm px-4 py-2 leading-none border rounded-full text-black bg-white border-white hover:border-transparent hover:text-white hover:bg-black mt-4 lg:mt-0"
+            >
+              Dashboard
+            </a>
+          </div>
+
+          <div v-if="user">
+            <a
               :href="$route('logout')"
               class="inline-block text-sm px-4 py-2 leading-none border rounded-full text-black bg-white border-white hover:border-transparent hover:text-white hover:bg-black mt-4 lg:mt-0"
             >
