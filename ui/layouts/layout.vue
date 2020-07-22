@@ -52,6 +52,15 @@
                 Login
               </a>
             </li>
+
+            <li
+              v-if="user"
+              class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+            >
+              <a :href="$route('logout')" class="font-semibold lg:font-normal">
+                Logout
+              </a>
+            </li>
           </ul>
 
           <div v-if="user">
@@ -60,15 +69,6 @@
               class="inline-block text-sm px-4 py-2 leading-none border rounded-full text-black bg-white border-white hover:border-transparent hover:text-white hover:bg-black mt-4 lg:mt-0"
             >
               Dashboard
-            </a>
-          </div>
-
-          <div v-if="user">
-            <a
-              :href="$route('logout')"
-              class="inline-block text-sm px-4 py-2 leading-none border rounded-full text-black bg-white border-white hover:border-transparent hover:text-white hover:bg-black mt-4 lg:mt-0"
-            >
-              Logout
             </a>
           </div>
 
@@ -85,6 +85,8 @@
     </nav>
 
     <div class="content h-auto py-6 px-64">
+      <slot />
+
       <template v-if="flashMessage">
         <div
           class="w-64 fixed right-0 top-0 p-4 text-sm shadow text-white bg-green-500 border border-green-700 text-green-100 rounded mr-4 mt-4 z-50 text-sm text-center"
@@ -92,8 +94,6 @@
           {{ flashMessage }}
         </div>
       </template>
-
-      <slot />
     </div>
 
     <div class="top-divider w-full"></div>
@@ -105,7 +105,7 @@
             <a href="#">Privacy Policy</a> | <a href="#">Terms and Conditions</a>
           </p>
           <p class="text-xs text-gray-100">
-            &copy; Copyright 2020 <a class="underline" href="https://www.adaptcms.com" target="_blank">AdaptCMS</a>.
+            &copy; Copyright 2020 <a class="underline" href="https://www.adaptcms.com" target="_blank" rel="noopener">AdaptCMS</a>.
             All Rights Reserved.
           </p>
         </div>
