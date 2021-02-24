@@ -40,7 +40,7 @@
                 class="hover:text-indigo-300"
                 :class="{ 'font-bold text-indigo-300': routeUrl === $route('modules.custom.index', { module: module.route_key }) }"
               >
-                {{ module.name }}
+                {{ module.plural }}
               </inertia-link>
             </li>
 
