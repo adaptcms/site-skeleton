@@ -104,7 +104,7 @@
             <a href="#">Privacy Policy</a> | <a href="#">Terms and Conditions</a>
           </p> -->
           <p class="text-xs text-gray-100">
-            &copy; Copyright 2020 <a href="https://www.adaptcms.com" class="font-bold" target="_blank" rel="noopener">AdaptCMS</a>.
+            &copy; Copyright 2021 <a href="https://www.adaptcms.com" class="font-bold" target="_blank" rel="noopener">AdaptCMS</a>.
             All Rights Reserved.
           </p>
         </div>
@@ -143,11 +143,11 @@ export default {
 
   computed: {
     user () {
-      return get(this.$page, 'auth.user', null)
+      return get(this.$page, 'props.auth.user', null)
     },
 
     pages () {
-      return get(this.$page, 'pages', null)
+      return get(this.$page, 'props.pages', null)
     },
 
     customPages () {
@@ -155,11 +155,11 @@ export default {
     },
 
     routeName () {
-      return get(this.$page, 'route.name', null)
+      return get(this.$page, 'props.route.name', null)
     },
 
     routeUrl () {
-      return get(this.$page, 'route.url', null)
+      return get(this.$page, 'props.route.url', null)
     }
   },
 
