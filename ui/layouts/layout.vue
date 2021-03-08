@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="app h-screen">
+  <div id="app" class="app min-h-screen h-auto">
     <nav class="flex items-center justify-between flex-wrap bg-blue-700 py-2 lg:sticky top-0 z-50">
       <div class="container mx-auto flex flex-wrap">
         <div class="flex items-center flex-shrink-0 text-white ml-4 lg:ml-0 lg:mr-6 h-12">
@@ -160,6 +160,10 @@ export default {
 
     routeUrl () {
       return get(this.$page, 'props.route.url', null)
+    },
+    
+    config () {
+      return get(this.$page, 'props.siteTypeConfig', null)
     }
   },
 
@@ -176,7 +180,9 @@ export default {
   },
 
   methods: {
-    //
+    config () {
+      return get(this.$page, 'props.siteType', null)
+    }
   }
 }
 </script>
