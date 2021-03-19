@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="app min-h-screen h-auto">
+  <div id="app" class="app h-screen">
     <nav class="flex items-center justify-between flex-wrap bg-blue-700 py-2 lg:sticky top-0 z-50">
       <div class="container mx-auto flex flex-wrap">
         <div class="flex items-center flex-shrink-0 text-white ml-4 lg:ml-0 lg:mr-6 h-12">
@@ -12,7 +12,9 @@
             class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white"
             @click.prevent="showMobileMenu = !showMobileMenu"
           >
-            <i class="fas fa-bars fa-lg" />
+            <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
           </button>
         </div>
 
@@ -114,6 +116,8 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+import { usePage } from '@inertiajs/inertia-vue3'
 import { get } from 'lodash'
 import FlashMessage from '@/Adaptcms/Base/ui/components/FlashMessage'
 import FlashMessageMixin from '@/Adaptcms/Base/ui/mixins/FlashMessageMixin'
@@ -142,28 +146,8 @@ export default {
   },
 
   computed: {
-    user () {
-      return get(this.$page, 'props.auth.user', null)
-    },
-
-    pages () {
-      return get(this.$page, 'props.pages', null)
-    },
-
     customPages () {
       return this.pages.filter(page => page.slug !== 'home')
-    },
-
-    routeName () {
-      return get(this.$page, 'props.route.name', null)
-    },
-
-    routeUrl () {
-      return get(this.$page, 'props.route.url', null)
-    },
-    
-    config () {
-      return get(this.$page, 'props.siteTypeConfig', null)
     }
   },
 
@@ -180,8 +164,24 @@ export default {
   },
 
   methods: {
-    config () {
-      return get(this.$page, 'props.siteType', null)
+    //
+  },
+
+  setup () {
+    const flashMessage = computed(() => usePage().props.value.flash.message)
+    const routeName = computed(() => usePage().props.value.route.name)
+    const routeUrl = computed(() => usePage().props.value.route.url)
+    const routeParams = computed(() => usePage().props.value.route.params)
+    const pages = computed(() => usePage().props.value.pages)
+    const user = computed(() => usePage().props.value.auth.user)
+
+    return {
+      flashMessage,
+      routeName,
+      routeUrl,
+      routeParams,
+      pages,
+      user
     }
   }
 }
